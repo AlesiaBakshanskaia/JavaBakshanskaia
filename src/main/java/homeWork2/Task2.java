@@ -19,7 +19,7 @@ public class Task2 {
     private static void printStringToFile(String str) {
         String pathFile = "src/main/java/homeWork2/File100TEST.txt";
         File fileForStr = new File(pathFile);
-
+//Проверку на наличие файла не делаем, если файла нет, его создаст FileWriter
         try (FileWriter fw = new FileWriter(fileForStr, false)) {
             fw.write(str);
         } catch (IOException e) {
