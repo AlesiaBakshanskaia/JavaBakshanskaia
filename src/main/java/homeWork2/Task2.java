@@ -22,6 +22,7 @@ public class Task2 {
 //Проверку на наличие файла не делаем, если файла нет, его создаст FileWriter
         try (FileWriter fw = new FileWriter(fileForStr, false)) {
             fw.write(str);
+            logger.info("Файл успешно записан");
         } catch (IOException e) {
             logger.warning(e.getMessage());
             System.exit(1);
