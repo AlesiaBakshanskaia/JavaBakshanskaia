@@ -1,13 +1,6 @@
 package homeWork2;
 
-
-
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.logging.Logger;
 
 //3*.Напишите метод, который определит тип (расширение) файлов из текущей папки и выведет в консоль результат вида:
 //        1 Расширение файла: txt
@@ -15,24 +8,28 @@ import java.util.logging.Logger;
 //        3 Расширение файла:
 //        4 Расширение файла: jpg
 public class Task3 {
-    static Logger logger = Logger.getLogger("Task3");
     public static void main(String[] args) {
-        String pathDir = "src/main/java/homeWork";
-        printExtensionOfFiles(pathDir);
+        String pathDir = "src/main/java/homeWork2";//путь к паке с файлами
+//        String pathDir = "src/main/java/homeWork2/testDirForTask3";//путь к пустой папке
+//        String pathDir = "src/main/java/homeWork2/Task1.java";//путь к файлу
+//        String pathDir = "src/main/java/homeWork";//путь к не существующей папке
+        getAndPrintExtentionOfFiles(pathDir);
     }
 
-    private static void printExtensionOfFiles(String pathDir) {
+    private static void getAndPrintExtentionOfFiles(String pathDir) {
         String[] filesNamesFromDir = convertPathToNamesArr(pathDir);
-//        System.out.println(Arrays.toString(filesNamesFromDir));
-        getAndPrintExtentionOfFiles(filesNamesFromDir);
+        if (filesNamesFromDir.length == 0) {
+            System.out.println("В заданной директории нет файлов");
+        }
+        PrintExtentionOfFiles(filesNamesFromDir);
     }
 
-    private static void getAndPrintExtentionOfFiles(String[] array) {
+    private static void PrintExtentionOfFiles(String[] array) {
         for (int i = 0; i < array.length; i++) {
             if(array[i].lastIndexOf(".") != -1 && array[i].lastIndexOf(".") != 0) {
-                System.out.println((i +1) + "  Расширение файла: " + array[i].substring(array[i].lastIndexOf(".") + 1));
+                System.out.println((i +1) + "  Расширение файла " + array[i] + ": " + array[i].substring(array[i].lastIndexOf(".") + 1));
             } else {
-                System.out.println((i +1) + "  Расширение файла: файл без расширения");
+                System.out.println((i +1) + "  Расширение файла " + array[i] + ": файл без расширения");
             }
         }
 
@@ -40,17 +37,21 @@ public class Task3 {
 
     private static String[] convertPathToNamesArr(String pathDir) {
         File dir = new File(pathDir);
-        if (!dir.isDirectory()) {
-            throw new RuntimeException("По указанному пути не было найдено директории: " + pathDir);
+        try {
+            if (dir.isFile()) {
+                System.out.println("Путь " + pathDir + " ведет к файлу");
+                System.exit(0);
+            }
+            String[] list = dir.list();
+            if (list == null) {
+                System.out.println("Директория не существует");
+                System.exit(0);
+            }
+            return list;
+        } catch (SecurityException e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
+            return null;
         }
-        return dir.list();
-//        try {
-//            dir.exists();
-//            return dir.list();
-//        } catch (IOException e) {
-//            logger.warning(e.getMessage());
-//            throw new RuntimeException("Файл не найден по пути: " + pathDir);
-//            System.exit(1);
-//        }
     }
 }
