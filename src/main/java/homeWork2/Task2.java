@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 
-//2. Напишите метод, который составит строку, состоящую из 100 повторений слова TEST и метод, который запишет эту строку в простой текстовый файл, обработайте исключения.
+//2. Напишите метод, который составит строку, состоящую из 100 повторений слова TEST и метод,
+// который запишет эту строку в простой текстовый файл, обработайте исключения.
 public class Task2 {
     static Logger logger = Logger.getLogger("Task2");
     public static void main(String[] args) {
