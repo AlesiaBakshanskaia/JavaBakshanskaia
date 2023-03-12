@@ -13,7 +13,7 @@ public class Task3 {
     }
 
     private static void delIntFromList(ArrayList<String> arrayListOfStrings) {
-        for (int i = arrayListOfStrings.size() - 1; i >= 0 ; i--) {
+        for (int i = arrayListOfStrings.size() - 1; i >= 0; i--) {
             try {
                 Integer.parseInt(arrayListOfStrings.get(i));
                 arrayListOfStrings.remove(i);
