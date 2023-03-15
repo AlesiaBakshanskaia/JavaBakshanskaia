@@ -16,7 +16,7 @@ public class Task1HW4 {
     private static void startStringHandler() {
         Scanner in = new Scanner(System.in);
         LinkedList<String> textList = new LinkedList<>();
-        Collections.addAll(textList, "ночь", "улица", "фонарь", "аптека", "канала ледяного рябь");
+//        Collections.addAll(textList, "ночь", "улица", "фонарь", "аптека", "канала ледяного рябь");
 
         while (true) {
             System.out.println();
@@ -36,11 +36,11 @@ public class Task1HW4 {
                 continue;
             }
             if (inputString.equalsIgnoreCase("stop")) {
+                System.out.println("Программа завершила свою работу");
                 break;
             }
             textList.add(inputString);
         }
-        in.close();
     }
 
     private static void delLastString(LinkedList<String> textList) {
@@ -48,14 +48,14 @@ public class Task1HW4 {
         if (delStr == null) {
             System.out.println("Удалять нечего, список строк пуст");
         } else {
-            System.out.println("Удалена строка " + delStr);
+            System.out.printf("Удалена строка \"%s\"%n", delStr);
         }
     }
 
     private static LinkedList<String> ternLinkedList(LinkedList<String> linkedList) {
         LinkedList<String> turnList = new LinkedList<>();
-        for (int i = 0; i < linkedList.size(); i++) {
-            turnList.addFirst(linkedList.get(i));
+        for (String s : linkedList) {
+            turnList.addFirst(s);
         }
         System.out.println(turnList);
         return null;

@@ -8,9 +8,23 @@ public class Task2HW4 {
     public static void main(String[] args) {
         LinkedList<String> linkedList = createLinkedList();
         System.out.println(linkedList);
-//        LinkedList<String> turnList = ternLinkedList1(linkedList);
-        LinkedList<String> turnList = ternLinkedList2(linkedList);
+        LinkedList<String> turnList = ternLinkedList1(linkedList);
+//        LinkedList<String> turnList = ternLinkedList2(linkedList);//Этот метод очень медленный
         System.out.println(turnList);
+    }
+
+    private static LinkedList<String> ternLinkedList1(LinkedList<String> linkedList) {
+        LinkedList<String> turnList = new LinkedList<>();
+        for (String s : linkedList) {
+            turnList.addFirst(s);
+        }
+        return turnList;
+    }
+
+    private static LinkedList<String> createLinkedList() {
+        LinkedList<String> linkedList = new LinkedList<>();
+        Collections.addAll(linkedList, "ночь", "улица", "фонарь", "аптека", "канала ледяного рябь");
+        return linkedList;
     }
 
     private static LinkedList<String> ternLinkedList2(LinkedList<String> linkedList) {
@@ -20,20 +34,6 @@ public class Task2HW4 {
             linkedList.set(i, temp2);
             linkedList.set(linkedList.size() - i - 1, temp1);
         }
-        return linkedList;
-    }
-
-    private static LinkedList<String> ternLinkedList1(LinkedList<String> linkedList) {
-        LinkedList<String> turnList = new LinkedList<>();
-        for (int i = 0; i < linkedList.size(); i++) {
-            turnList.addFirst(linkedList.get(i));
-        }
-        return turnList;
-    }
-
-    private static LinkedList<String> createLinkedList() {
-        LinkedList<String> linkedList = new LinkedList<>();
-        Collections.addAll(linkedList, "ночь", "улица", "фонарь", "аптека", "канала ледяного рябь");
         return linkedList;
     }
 }
