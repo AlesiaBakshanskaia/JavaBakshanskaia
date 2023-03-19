@@ -8,9 +8,9 @@ public class Task2HW5 {
     public static void main(String[] args) {
         ArrayList<String> listStaff = new ArrayList<>();
         Collections.addAll(listStaff, "Иван Иванов", "Светлана Петрова", "Кристина Белова", "Анна Мусина", "Анна Крутова",
-                                                "Иван Юрин", "Петр Лыков", "Павел Чернов", "Петр Чернышов", "Мария Федорова",
-                                                "Марина Светлова", "Мария Савина", "Мария Рыкова", "Марина Лугова", "Анна Владимирова",
-                                                "Иван Мечников", "Петр Петин", "Иван Ежов");
+                "Иван Юрин", "Петр Лыков", "Павел Чернов", "Петр Чернышов", "Мария Федорова",
+                "Марина Светлова", "Мария Савина", "Мария Рыкова", "Марина Лугова", "Анна Владимирова",
+                "Иван Мечников", "Петр Петин", "Иван Ежов");
         System.out.println(listStaff);
         HashMap<String, Integer> mapStaff = getMapNamesAndNumbs(listStaff);
         TreeMap<Integer, String> mapSortNames = printSortedNames(mapStaff);
@@ -47,10 +47,10 @@ public class Task2HW5 {
 
     private static HashMap<String, Integer> getMapNamesAndNumbs(ArrayList<String> listStaff) {
         HashMap<String, Integer> mapStaff = new HashMap<>();
-        for (String person: listStaff) {
+        for (String person : listStaff) {
             String[] temp = person.split(" ");
             String keyMapStaff = temp[0];
-            if (mapStaff.containsKey(keyMapStaff)){
+            if (mapStaff.containsKey(keyMapStaff)) {
                 mapStaff.put(keyMapStaff, mapStaff.get(keyMapStaff) + 1);
             } else {
                 mapStaff.put(keyMapStaff, 1);
@@ -59,10 +59,11 @@ public class Task2HW5 {
 //        System.out.println(mapStaff);
         return mapStaff;
     }
+
     private static void printMap2(TreeMap<Integer, String> numNamesTMap) {
         for (Map.Entry<Integer, String> elem : numNamesTMap.entrySet()) {
             int key = elem.getKey();
-            String [] values = elem.getValue().split(" ");
+            String[] values = elem.getValue().split(" ");
             for (String value : values) {
                 System.out.printf("Имя %s повторяется %d раз(а)%n", value, key);
             }
