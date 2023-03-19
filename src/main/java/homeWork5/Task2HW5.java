@@ -14,7 +14,12 @@ public class Task2HW5 {
         System.out.println(listStaff);
         HashMap<String, Integer> mapStaff = getMapNamesAndNumbs(listStaff);
         TreeMap<Integer, String> mapSortNames = printSortedNames(mapStaff);
-        printMap(mapSortNames);
+        System.out.println(" ");
+        System.out.println("Первый вариант печати");
+        printMap(mapSortNames);//первый вариант печати
+        System.out.println(" ");
+        System.out.println("Второй вариант печати");
+        printMap2(mapSortNames);//второй вариант печати
     }
 
     private static void printMap(TreeMap<Integer, String> mapSortNames) {
@@ -26,7 +31,7 @@ public class Task2HW5 {
     private static TreeMap<Integer, String> printSortedNames(HashMap<String, Integer> mapStaff) {
         TreeMap<Integer, String> mapSortNames = new TreeMap<>(Comparator.reverseOrder());
         for (Map.Entry<String, Integer> el : mapStaff.entrySet()) {
-            Integer newKey = el.getValue();
+            int newKey = el.getValue();
             String newVal = el.getKey();
             if (mapSortNames.containsKey(newKey)) {
                 StringBuilder sb = new StringBuilder();
@@ -44,24 +49,23 @@ public class Task2HW5 {
         HashMap<String, Integer> mapStaff = new HashMap<>();
         for (String person: listStaff) {
             String[] temp = person.split(" ");
-            String keymapStaff = temp[0];
-            if (mapStaff.containsKey(keymapStaff)){
-                mapStaff.put(keymapStaff, mapStaff.get(keymapStaff) + 1);
+            String keyMapStaff = temp[0];
+            if (mapStaff.containsKey(keyMapStaff)){
+                mapStaff.put(keyMapStaff, mapStaff.get(keyMapStaff) + 1);
             } else {
-                mapStaff.put(keymapStaff, 1);
+                mapStaff.put(keyMapStaff, 1);
             }
         }
 //        System.out.println(mapStaff);
         return mapStaff;
     }
-
-//    private static Set<String> getSetNames(ArrayList<String> listStaff) {
-//        Set<String> setNames = new HashSet<>();
-//        for (String person: listStaff) {
-//            String[] temp = person.split(" ");
-//            setNames.add(temp[0]);
-//        }
-////        System.out.println(setNames);
-//        return setNames;
-//    }
+    private static void printMap2(TreeMap<Integer, String> numNamesTMap) {
+        for (Map.Entry<Integer, String> elem : numNamesTMap.entrySet()) {
+            int key = elem.getKey();
+            String [] values = elem.getValue().split(" ");
+            for (String value : values) {
+                System.out.printf("Имя %s повторяется %d раз(а)%n", value, key);
+            }
+        }
+    }
 }
