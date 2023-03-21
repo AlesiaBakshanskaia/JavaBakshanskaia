@@ -1,8 +1,5 @@
 package homeWork5;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
 //1. Реализуйте структуру телефонной книги с помощью HashMap, учитывая, что 1 человек может иметь несколько телефонов.
@@ -28,16 +25,16 @@ public class Task1HW5 {
     private static void startPhoneBook(HashMap<String, LinkedList<String>> phoneBook) {
         Scanner in = new Scanner(System.in);
         while (true) {
-            System.out.printf("%nВведите желаемое действие: \n" +
-                    "Напечатать всю телефонную книгу: printall\n" +
-                    "Найти человека: findpers\n" +
-                    "Найти телефон: findph\n" +
-                    "Удалить запись: delpers\n" +
-                    "Удалить один из номеров: delph\n" +
-                    "Добавить новую запись: newpers\n" +
-                    "Добавить телефон к существующей записи: newph\n" +
-                    "Изменить имя и/или фамилию  в записи: change\n" +
-                    "Закончить работу: end\n");
+            System.out.printf("%nВведите желаемое действие: %n" +
+                    " Напечатать всю телефонную книгу: printall%n" +
+                    " Найти человека: findpers%n" +
+                    " Найти телефон: findph%n" +
+                    " Удалить запись: delpers%n" +
+                    " Удалить один из номеров: delph%n" +
+                    " Добавить новую запись: newpers%n" +
+                    " Добавить телефон к существующей записи: newph%n" +
+                    " Изменить имя и/или фамилию  в записи: change%n" +
+                    " Закончить работу: end%n");
 
             String inputString = in.nextLine();
 
